@@ -1,0 +1,24 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: README
+#+date: <2024-03-24 Sun>
+#+author: Kristian Alexander P
+#+email: alexforsale@yahoo.com
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 29.2 (Org mode 9.6.15)
+#+cite_export:
+#+begin_html
+<a href="https://raw.githubusercontent.com/alexforsale/dotfiles-vim/main/LICENSE.md">
+<img alt="GPLv3" src="https://img.shields.io/github/license/alexforsale/dotfiles-vim" />
+</a>
+
+<a href="https://github.com/alexforsale/dotfiles-vim/actions/workflows/publish.yml">
+<img alt="Build status" src="https://github.com/alexforsale/dotfiles-vim/actions/workflows/publish.yml/badge.svg" />
+</a>
+#+end_html
+* About
+My /vim/ configuration file.

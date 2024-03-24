@@ -11,6 +11,9 @@
 #+exclude_tags: noexport
 #+creator: Emacs 29.2 (Org mode 9.6.15)
 #+cite_export:
+#+property: EXPORT_FILE_NAME: index.html
+#+startup: showall
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 * =~/.config/vim/vimrc=
 :PROPERTIES:
 :header-args: :tangle .config/vim/vimrc :mkdirp t
