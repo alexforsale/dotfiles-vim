@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-03-24 Sun 14:42 -->
+<!-- 2024-03-24 Sun 14:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Vim Configuration File</title>
@@ -23,15 +23,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4197ef4">1. <code>~/.config/vim/vimrc</code></a>
+<li><a href="#org207a3f5">1. <code>~/.config/vim/vimrc</code></a>
 <ul>
-<li><a href="#orgfb30c4e">1.1. set default directories</a>
+<li><a href="#orgeed15a3">1.1. set default directories</a>
 <ul>
-<li><a href="#org07fd270">1.1.1. Sane default from <i>archlinux</i></a></li>
-<li><a href="#org71b5b61">1.1.2. move temporary files into a secure location</a></li>
-<li><a href="#org5d8291c">1.1.3. Make shift-insert work like in Xterm</a></li>
-<li><a href="#org3736baf">1.1.4. Misc sane defaults</a></li>
-<li><a href="#org24307ee">1.1.5. modular</a></li>
+<li><a href="#org2b09719">1.1.1. Sane default from <i>archlinux</i></a></li>
+<li><a href="#orgfe98301">1.1.2. move temporary files into a secure location</a></li>
+<li><a href="#orgec2c8bf">1.1.3. Make shift-insert work like in Xterm</a></li>
+<li><a href="#org543d9d2">1.1.4. Misc sane defaults</a></li>
+<li><a href="#org7a90891">1.1.5. modular</a></li>
 </ul>
 </li>
 </ul>
@@ -39,12 +39,12 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org4197ef4" class="outline-2">
-<h2 id="org4197ef4"><span class="section-number-2">1</span> <code>~/.config/vim/vimrc</code></h2>
+<div id="outline-container-org207a3f5" class="outline-2">
+<h2 id="org207a3f5"><span class="section-number-2">1</span> <code>~/.config/vim/vimrc</code></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgfb30c4e" class="outline-3">
-<h3 id="orgfb30c4e"><span class="section-number-3">1.1</span> set default directories</h3>
+<div id="outline-container-orgeed15a3" class="outline-3">
+<h3 id="orgeed15a3"><span class="section-number-3">1.1</span> set default directories</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-vimrc">"from https://wiki.archlinux.org/title/Vim
@@ -73,8 +73,8 @@ if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 </pre>
 </div>
 </div>
-<div id="outline-container-org07fd270" class="outline-4">
-<h4 id="org07fd270"><span class="section-number-4">1.1.1</span> Sane default from <i>archlinux</i></h4>
+<div id="outline-container-org2b09719" class="outline-4">
+<h4 id="org2b09719"><span class="section-number-4">1.1.1</span> Sane default from <i>archlinux</i></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 Use Vim defaults instead of 100% vi compatibility
@@ -87,8 +87,8 @@ endif
 </div>
 </div>
 </div>
-<div id="outline-container-org71b5b61" class="outline-4">
-<h4 id="org71b5b61"><span class="section-number-4">1.1.2</span> move temporary files into a secure location</h4>
+<div id="outline-container-orgfe98301" class="outline-4">
+<h4 id="orgfe98301"><span class="section-number-4">1.1.2</span> move temporary files into a secure location</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <div class="org-src-container">
 <pre class="src src-vimrc">if exists('$XDG_CACHE_HOME')
@@ -113,8 +113,8 @@ endif
 </div>
 </div>
 </div>
-<div id="outline-container-org5d8291c" class="outline-4">
-<h4 id="org5d8291c"><span class="section-number-4">1.1.3</span> Make shift-insert work like in Xterm</h4>
+<div id="outline-container-orgec2c8bf" class="outline-4">
+<h4 id="orgec2c8bf"><span class="section-number-4">1.1.3</span> Make shift-insert work like in Xterm</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <div class="org-src-container">
 <pre class="src src-vimrc">if has('gui_running')
@@ -125,8 +125,8 @@ endif
 </div>
 </div>
 </div>
-<div id="outline-container-org3736baf" class="outline-4">
-<h4 id="org3736baf"><span class="section-number-4">1.1.4</span> Misc sane defaults</h4>
+<div id="outline-container-org543d9d2" class="outline-4">
+<h4 id="org543d9d2"><span class="section-number-4">1.1.4</span> Misc sane defaults</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <div class="org-src-container">
 <pre class="src src-vimrc">" Load plugins according to detected filetype.
@@ -198,8 +198,8 @@ set tm=500
 </div>
 </div>
 </div>
-<div id="outline-container-org24307ee" class="outline-4">
-<h4 id="org24307ee"><span class="section-number-4">1.1.5</span> modular</h4>
+<div id="outline-container-org7a90891" class="outline-4">
+<h4 id="org7a90891"><span class="section-number-4">1.1.5</span> modular</h4>
 <div class="outline-text-4" id="text-1-1-5">
 <div class="org-src-container">
 <pre class="src src-vimrc">runtime modules/keybindings.vim
@@ -208,7 +208,7 @@ runtime modules/ui.vim
 </div>
 </div>
 <ol class="org-ol">
-<li><a id="org66793f0"></a>keybindings<br />
+<li><a id="org6606e13"></a>keybindings<br />
 <div class="outline-text-5" id="text-1-1-5-1">
 <div class="org-src-container">
 <pre class="src src-vimrc">let mapleader = "\&lt;Space&gt;"
@@ -232,7 +232,7 @@ map &lt;leader&gt;h :bprevious&lt;cr&gt;
 </div>
 </div>
 </li>
-<li><a id="orgacd2bfa"></a>ui<br />
+<li><a id="org0124b21"></a>ui<br />
 <div class="outline-text-5" id="text-1-1-5-2">
 <div class="org-src-container">
 <pre class="src src-vimrc">" Enable syntax highlighting
@@ -286,7 +286,7 @@ set guioptions-=L
 <div id="postamble" class="status">
 <p class="date">Date: 2024-03-24 Sun 00:00</p>
 <p class="author">Author: Kristian Alexander P</p>
-<p class="date">Created: 2024-03-24 Sun 14:42</p>
+<p class="date">Created: 2024-03-24 Sun 14:43</p>
 </div>
 </body>
 </html>
