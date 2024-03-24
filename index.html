@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-03-24 Sun 14:40 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vim Configuration File</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Kristian Alexander P" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Vim Configuration File</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org78a97cc">1. <code>~/.config/vim/vimrc</code></a>
+<ul>
+<li><a href="#org962488c">1.1. set default directories</a>
+<ul>
+<li><a href="#org562ca99">1.1.1. Sane default from <i>archlinux</i></a></li>
+<li><a href="#org08b068f">1.1.2. move temporary files into a secure location</a></li>
+<li><a href="#org7ac167e">1.1.3. Make shift-insert work like in Xterm</a></li>
+<li><a href="#org1884563">1.1.4. Misc sane defaults</a></li>
+<li><a href="#org2e5bbff">1.1.5. modular</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org78a97cc" class="outline-2">
+<h2 id="org78a97cc"><span class="section-number-2">1</span> <code>~/.config/vim/vimrc</code></h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org962488c" class="outline-3">
+<h3 id="org962488c"><span class="section-number-3">1.1</span> set default directories</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-vimrc">"from https://wiki.archlinux.org/title/Vim
+if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
+if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
+if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
+if empty($XDG_STATE_HOME)  | let $XDG_STATE_HOME  = $HOME."/.local/state" | endif
+
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath+=$XDG_DATA_HOME/vim
+set runtimepath+=$XDG_CONFIG_HOME/vim/after
+
+set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
+set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
+
+let g:netrw_home = $XDG_DATA_HOME."/vim"
+call mkdir($XDG_DATA_HOME."/vim/spell", 'p')
+
+set backupdir=$XDG_STATE_HOME/vim/backup | call mkdir(&amp;backupdir, 'p')
+set directory=$XDG_STATE_HOME/vim/swap   | call mkdir(&amp;directory, 'p')
+set undodir=$XDG_STATE_HOME/vim/undo     | call mkdir(&amp;undodir,   'p')
+set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&amp;viewdir,   'p')
+call mkdir($XDG_DATA_HOME."/vim/spell", 'p', 0700)
+
+if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
+</pre>
+</div>
+</div>
+<div id="outline-container-org562ca99" class="outline-4">
+<h4 id="org562ca99"><span class="section-number-4">1.1.1</span> Sane default from <i>archlinux</i></h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+Use Vim defaults instead of 100% vi compatibility
+</p>
+<div class="org-src-container">
+<pre class="src src-vimrc">if &amp;compatible
+  set nocompatible
+endif
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org08b068f" class="outline-4">
+<h4 id="org08b068f"><span class="section-number-4">1.1.2</span> move temporary files into a secure location</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+<pre class="src src-vimrc">if exists('$XDG_CACHE_HOME')
+  let &amp;g:directory=$XDG_CACHE_HOME
+else
+  let &amp;g:directory=$HOME . '/.cache'
+endif
+let &amp;g:undodir=&amp;g:directory . '/vim/undo//'
+let &amp;g:backupdir=&amp;g:directory . '/vim/backup//'
+let &amp;g:directory.='/vim/swap//'
+" Create directories if they doesn't exist
+if ! isdirectory(expand(&amp;g:directory))
+  silent! call mkdir(expand(&amp;g:directory), 'p', 0700)
+endif
+if ! isdirectory(expand(&amp;g:backupdir))
+  silent! call mkdir(expand(&amp;g:backupdir), 'p', 0700)
+endif
+if ! isdirectory(expand(&amp;g:undodir))
+  silent! call mkdir(expand(&amp;g:undodir), 'p', 0700)
+endif
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7ac167e" class="outline-4">
+<h4 id="org7ac167e"><span class="section-number-4">1.1.3</span> Make shift-insert work like in Xterm</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<div class="org-src-container">
+<pre class="src src-vimrc">if has('gui_running')
+  map &lt;S-Insert&gt; &lt;MiddleMouse&gt;
+  map! &lt;S-Insert&gt; &lt;MiddleMouse&gt;
+endif
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1884563" class="outline-4">
+<h4 id="org1884563"><span class="section-number-4">1.1.4</span> Misc sane defaults</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<div class="org-src-container">
+<pre class="src src-vimrc">" Load plugins according to detected filetype.
+filetype plugin indent on  
+" Enable syntax highlighting.
+syntax on                  
+" Indent according to previous line.
+set autoindent             
+" Use spaces instead of tabs.
+set expandtab              
+" Tab key indents by 4 spaces.
+set softtabstop =4         
+" &gt;&gt; indents by 4 spaces.
+set shiftwidth  =4         
+" &gt;&gt; indents to next multiple of 'shiftwidth'.
+set shiftround             
+" Make backspace work as you would expect.
+set backspace   =indent,eol,start  
+" Switch between buffers without having to save first.
+set hidden                 
+" Always show statusline.
+set laststatus  =2         
+" Show as much as possible of the last line.
+set display     =lastline  
+" Show current mode in command-line.
+set showmode               
+" Show already typed keys when more are expected.
+set showcmd                
+" Highlight while searching with / or ?.
+set incsearch              
+" Keep matches highlighted.
+set hlsearch               
+" Faster redrawing.
+set ttyfast                
+" Only redraw when necessary.
+set lazyredraw             
+" Open new windows below the current window.
+set splitbelow             
+" Open new windows right of the current window.
+set splitright             
+" Find the current line quickly.
+set cursorline             
+" Searches wrap around end-of-file.
+set wrapscan               
+" Always report changed lines.
+set report      =0         
+" Only highlight the first 200 columns.
+set synmaxcol   =200       
+" Show non-printable characters.
+set list                   
+set noruler
+if has('multi_byte') &amp;&amp; &amp;encoding ==# 'utf-8'
+  let &amp;listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
+else
+  let &amp;listchars = 'tab:&gt; ,extends:&gt;,precedes:&lt;,nbsp:.'
+endif
+" Ignore case when searching
+set ignorecase
+" When searching try to be smart about cases
+set smartcase
+" Show matching brackets when text indicator is over them
+set showmatch
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2e5bbff" class="outline-4">
+<h4 id="org2e5bbff"><span class="section-number-4">1.1.5</span> modular</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<div class="org-src-container">
+<pre class="src src-vimrc">runtime modules/keybindings.vim
+runtime modules/ui.vim
+</pre>
+</div>
+</div>
+<ol class="org-ol">
+<li><a id="org9fca109"></a>keybindings<br />
+<div class="outline-text-5" id="text-1-1-5-1">
+<div class="org-src-container">
+<pre class="src src-vimrc">let mapleader = "\&lt;Space&gt;"
+
+" Fast saving
+nmap &lt;leader&gt;w :w!&lt;cr&gt;
+
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command! W execute 'w !sudo tee % &gt; /dev/null' &lt;bar&gt; edit!
+
+" Close the current buffer
+map &lt;leader&gt;bd :Bclose&lt;cr&gt;:tabclose&lt;cr&gt;gT
+
+" Close all the buffers
+map &lt;leader&gt;ba :bufdo bd&lt;cr&gt;
+
+map &lt;leader&gt;l :bnext&lt;cr&gt;
+map &lt;leader&gt;h :bprevious&lt;cr&gt;
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgec6e301"></a>ui<br />
+<div class="outline-text-5" id="text-1-1-5-2">
+<div class="org-src-container">
+<pre class="src src-vimrc">" Enable syntax highlighting
+syntax enable
+
+" Set regular expression engine automatically
+set regexpengine=0
+
+" Enable 256 colors palette in Gnome Terminal
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+endif
+
+try
+    colorscheme desert
+catch
+endtry
+
+set background=dark
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+endif
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+endif
+
+" Disable scrollbars (real hackers don't use scrollbars for navigation!)
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2024-03-24 Sun 00:00</p>
+<p class="author">Author: Kristian Alexander P</p>
+<p class="date">Created: 2024-03-24 Sun 14:40</p>
+</div>
+</body>
+</html>
