@@ -20,6 +20,7 @@
 :END:
 ** set default directories
 #+begin_src vimrc
+" XDG Base Directory {{{
 "from https://wiki.archlinux.org/title/Vim
 if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
 if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
@@ -43,15 +44,16 @@ set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p')
 call mkdir($XDG_DATA_HOME."/vim/spell", 'p', 0700)
 
 if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
+" }}}
 #+end_src
-*** Sane default from /archlinux/
+** Sane default from /archlinux/
 Use Vim defaults instead of 100% vi compatibility
 #+begin_src vimrc
 if &compatible
   set nocompatible
 endif
 #+end_src
-*** move temporary files into a secure location
+** move temporary files into a secure location
 #+begin_src vimrc
 if exists('$XDG_CACHE_HOME')
   let &g:directory=$XDG_CACHE_HOME
@@ -59,7 +61,7 @@ else
   let &g:directory=$HOME . '/.cache'
 endif
 let &g:undodir=&g:directory . '/vim/undo//'
-let &g:backupdir=&g:directory . '/vim/backup//'
+let &g:backupdir=&g:directory . '/vim/backup/'
 let &g:directory.='/vim/swap//'
 " Create directories if they doesn't exist
 if ! isdirectory(expand(&g:directory))
@@ -72,14 +74,14 @@ if ! isdirectory(expand(&g:undodir))
   silent! call mkdir(expand(&g:undodir), 'p', 0700)
 endif
 #+end_src
-*** Make shift-insert work like in Xterm
+** Make shift-insert work like in Xterm
 #+begin_src vimrc
 if has('gui_running')
   map <S-Insert> <MiddleMouse>
   map! <S-Insert> <MiddleMouse>
 endif
 #+end_src
-*** Misc sane defaults
+** Misc sane defaults
 #+begin_src vimrc
 " Load plugins according to detected filetype.
 filetype plugin indent on  
@@ -141,18 +143,27 @@ set ignorecase
 set smartcase
 " Show matching brackets when text indicator is over them
 set showmatch
-" No annoying sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
 #+end_src
-*** modular
+** modular
 #+begin_src vimrc
+runtime modules/plug.vim
 runtime modules/keybindings.vim
 runtime modules/ui.vim
 #+end_src
-**** keybindings
+*** plug
+:PROPERTIES:
+:header-args: :tangle .config/vim/modules/plug.vim :mkdirp t
+:END:
+
+#+begin_src vimrc
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.local/share/vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+Plug 'easymotion/vim-easymotion'
+
+call plug#end()
+#+end_src
+*** keybindings
 :PROPERTIES:
 :header-args: :tangle .config/vim/modules/keybindings.vim :mkdirp t
 :END:
@@ -175,7 +186,7 @@ map <leader>ba :bufdo bd<cr>
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 #+end_src
-**** ui
+*** ui
 :PROPERTIES:
 :header-args: :tangle .config/vim/modules/ui.vim :mkdirp t
 :END:
@@ -191,13 +202,6 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
-try
-    colorscheme desert
-catch
-endtry
-
-set background=dark
-
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -212,11 +216,30 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-endif
-
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
 set guioptions-=R
 set guioptions-=l
 set guioptions-=L
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+" set mouse for all modes
+set mouse=a
+set mousemodel=popup_setpos
+silent! set ttymouse=sgr
+
+" title
+set title
+set titlestring=
+set titlestring+=%t%(\ %M%)%(\ (%{expand(\"%:p:~:.:h\")}/)%)
+set titlestring+=\ \|\ %{$USER}@%{hostname()}:%{substitute(getcwd(),$HOME,'~','')}
+
+" nerd tree
+autocmd VimEnter * NERDTree | wincmd p
 #+end_src
+
