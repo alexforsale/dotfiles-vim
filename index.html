@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-06 Wed 22:53 -->
+<!-- 2025-08-06 Wed 22:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Vim Configuration File</title>
@@ -197,12 +197,12 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Vim Configuration File</h1>
-<div id="outline-container-orgdcd83cd" class="outline-2">
-<h2 id="orgdcd83cd"><span class="section-number-2">1.</span> <code>~/.vimrc</code></h2>
+<div id="outline-container-org979de62" class="outline-2">
+<h2 id="org979de62"><span class="section-number-2">1.</span> <code>~/.vimrc</code></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgb10f88c" class="outline-3">
-<h3 id="orgb10f88c"><span class="section-number-3">1.1.</span> set default directories</h3>
+<div id="outline-container-org62f4861" class="outline-3">
+<h3 id="org62f4861"><span class="section-number-3">1.1.</span> set default directories</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-conf"><span style="color: #228b22;">" XDG Base Directory {{</span><span style="color: #bc8f8f;">{
@@ -234,33 +234,33 @@ if !has(<span style="color: #bc8f8f;">'nvim'</span>) | set viminfofile=$XDG_STAT
 </div>
 </div>
 </div>
-<div id="outline-container-org634c6cb" class="outline-3">
-<h3 id="org634c6cb"><span class="section-number-3">1.2.</span> Sane default from <i>archlinux</i></h3>
+<div id="outline-container-orgc8a0524" class="outline-3">
+<h3 id="orgc8a0524"><span class="section-number-3">1.2.</span> Sane default from <i>archlinux</i></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Use Vim defaults instead of 100% vi compatibility
 </p>
 <div class="org-src-container">
-<pre class="src src-vimrc">if &amp;compatible
+<pre class="src src-conf">if &amp;compatible
   set nocompatible
 endif
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org383493c" class="outline-3">
-<h3 id="org383493c"><span class="section-number-3">1.3.</span> move temporary files into a secure location</h3>
+<div id="outline-container-orgc0af3d6" class="outline-3">
+<h3 id="orgc0af3d6"><span class="section-number-3">1.3.</span> move temporary files into a secure location</h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
-<pre class="src src-vimrc">if exists('$XDG_CACHE_HOME')
-  let &amp;g:directory=$XDG_CACHE_HOME
+<pre class="src src-conf">if exists(<span style="color: #bc8f8f;">'$XDG_CACHE_HOME'</span>)
+  <span style="color: #b8860b;">let &amp;g:directory</span>=$XDG_CACHE_HOME
 else
-  let &amp;g:directory=$HOME . '/.cache'
+  <span style="color: #b8860b;">let &amp;g:directory</span>=$HOME . <span style="color: #bc8f8f;">'/.cache'</span>
 endif
-let &amp;g:undodir=&amp;g:directory . '/vim/undo//'
-let &amp;g:backupdir=&amp;g:directory . '/vim/backup/'
-let &amp;g:directory.='/vim/swap//'
-" Create directories if they doesn't exist
+<span style="color: #b8860b;">let &amp;g:undodir</span>=&amp;g:directory . <span style="color: #bc8f8f;">'/vim/undo//'</span>
+<span style="color: #b8860b;">let &amp;g:backupdir</span>=&amp;g:directory . <span style="color: #bc8f8f;">'/vim/backup/'</span>
+<span style="color: #b8860b;">let &amp;g:directory.</span>=<span style="color: #bc8f8f;">'/vim/swap//'</span>
+<span style="color: #bc8f8f;">" Create directories if they doesn't exist
 if ! isdirectory(expand(&amp;g:directory))
   silent! call mkdir(expand(&amp;g:directory), 'p', 0700)
 endif
@@ -269,16 +269,16 @@ if ! isdirectory(expand(&amp;g:backupdir))
 endif
 if ! isdirectory(expand(&amp;g:undodir))
   silent! call mkdir(expand(&amp;g:undodir), 'p', 0700)
-endif
+endif</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org38c8b4f" class="outline-3">
-<h3 id="org38c8b4f"><span class="section-number-3">1.4.</span> Make shift-insert work like in Xterm</h3>
+<div id="outline-container-org2b76878" class="outline-3">
+<h3 id="org2b76878"><span class="section-number-3">1.4.</span> Make shift-insert work like in Xterm</h3>
 <div class="outline-text-3" id="text-1-4">
 <div class="org-src-container">
-<pre class="src src-vimrc">if has('gui_running')
+<pre class="src src-conf">if has(<span style="color: #bc8f8f;">'gui_running'</span>)
   map &lt;S-Insert&gt; &lt;MiddleMouse&gt;
   map! &lt;S-Insert&gt; &lt;MiddleMouse&gt;
 endif
@@ -286,181 +286,181 @@ endif
 </div>
 </div>
 </div>
-<div id="outline-container-org62acc40" class="outline-3">
-<h3 id="org62acc40"><span class="section-number-3">1.5.</span> Misc sane defaults</h3>
+<div id="outline-container-orgb2ad565" class="outline-3">
+<h3 id="orgb2ad565"><span class="section-number-3">1.5.</span> Misc sane defaults</h3>
 <div class="outline-text-3" id="text-1-5">
 <div class="org-src-container">
-<pre class="src src-vimrc">" Load plugins according to detected filetype.
+<pre class="src src-conf"><span style="color: #bc8f8f;">" Load plugins according to detected filetype.
 filetype plugin indent on
-" Enable syntax highlighting.
+"</span> Enable syntax highlighting.
 syntax on
-" Indent according to previous line.
+<span style="color: #bc8f8f;">" Indent according to previous line.
 set autoindent
-" Use spaces instead of tabs.
+"</span> Use spaces instead of tabs.
 set expandtab
-" Tab key indents by 4 spaces.
+<span style="color: #bc8f8f;">" Tab key indents by 4 spaces.
 set softtabstop =4
-" &gt;&gt; indents by 4 spaces.
-set shiftwidth  =4
-" &gt;&gt; indents to next multiple of 'shiftwidth'.
+"</span> &gt;&gt; indents by 4 spaces.
+<span style="color: #b8860b;">set shiftwidth</span>  =4
+<span style="color: #bc8f8f;">" &gt;&gt; indents to next multiple of 'shiftwidth'.
 set shiftround
-" Make backspace work as you would expect.
-set backspace   =indent,eol,start
-" Switch between buffers without having to save first.
+"</span> Make backspace work as you would expect.
+<span style="color: #b8860b;">set backspace</span>   =indent,eol,start
+<span style="color: #bc8f8f;">" Switch between buffers without having to save first.
 set hidden
-" Always show statusline.
-set laststatus  =2
-" Show as much as possible of the last line.
+"</span> Always show statusline.
+<span style="color: #b8860b;">set laststatus</span>  =2
+<span style="color: #bc8f8f;">" Show as much as possible of the last line.
 set display     =lastline
-" Show current mode in command-line.
+"</span> Show current mode in command-line.
 set showmode
-" Show already typed keys when more are expected.
+<span style="color: #bc8f8f;">" Show already typed keys when more are expected.
 set showcmd
-" Highlight while searching with / or ?.
+"</span> Highlight while searching with / or ?.
 set incsearch
-" Keep matches highlighted.
+<span style="color: #bc8f8f;">" Keep matches highlighted.
 set hlsearch
-" Faster redrawing.
+"</span> Faster redrawing.
 set ttyfast
-" Only redraw when necessary.
+<span style="color: #bc8f8f;">" Only redraw when necessary.
 set lazyredraw
-" Open new windows below the current window.
+"</span> Open new windows below the current window.
 set splitbelow
-" Open new windows right of the current window.
+<span style="color: #bc8f8f;">" Open new windows right of the current window.
 set splitright
-" Find the current line quickly.
+"</span> Find the current line quickly.
 set cursorline
-" Searches wrap around end-of-file.
+<span style="color: #bc8f8f;">" Searches wrap around end-of-file.
 set wrapscan
-" Always report changed lines.
-set report      =0
-" Only highlight the first 200 columns.
+"</span> Always report changed lines.
+<span style="color: #b8860b;">set report</span>      =0
+<span style="color: #bc8f8f;">" Only highlight the first 200 columns.
 set synmaxcol   =200
-" Show non-printable characters.
+"</span> Show non-printable characters.
 set list
 set noruler
-if has('multi_byte') &amp;&amp; &amp;encoding ==# 'utf-8'
-  let &amp;listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
+if has(<span style="color: #bc8f8f;">'multi_byte'</span>) &amp;&amp; &amp;encoding ==<span style="color: #b22222;"># </span><span style="color: #b22222;">'utf-8'
+</span>  <span style="color: #b8860b;">let &amp;listchars</span> = <span style="color: #bc8f8f;">'tab:&#9656; ,extends:&#10095;,precedes:&#10094;,nbsp:&#177;'</span>
 else
-  let &amp;listchars = 'tab:&gt; ,extends:&gt;,precedes:&lt;,nbsp:.'
+  <span style="color: #b8860b;">let &amp;listchars</span> = <span style="color: #bc8f8f;">'tab:&gt; ,extends:&gt;,precedes:&lt;,nbsp:.'</span>
 endif
-" Ignore case when searching
+<span style="color: #bc8f8f;">" Ignore case when searching
 set ignorecase
-" When searching try to be smart about cases
+"</span> When searching try to be smart about cases
 set smartcase
-" Show matching brackets when text indicator is over them
-set showmatch
+<span style="color: #bc8f8f;">" Show matching brackets when text indicator is over them
+set showmatch</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd91e8f7" class="outline-3">
-<h3 id="orgd91e8f7"><span class="section-number-3">1.6.</span> modular</h3>
+<div id="outline-container-org5fb04ba" class="outline-3">
+<h3 id="org5fb04ba"><span class="section-number-3">1.6.</span> modular</h3>
 <div class="outline-text-3" id="text-1-6">
 <div class="org-src-container">
-<pre class="src src-vimrc">runtime modules/plug.vim
+<pre class="src src-conf">runtime modules/plug.vim
 runtime modules/keybindings.vim
 runtime modules/ui.vim
 </pre>
 </div>
 </div>
-<div id="outline-container-orgbd753c0" class="outline-4">
-<h4 id="orgbd753c0"><span class="section-number-4">1.6.1.</span> plug</h4>
+<div id="outline-container-org35a5efc" class="outline-4">
+<h4 id="org35a5efc"><span class="section-number-4">1.6.1.</span> plug</h4>
 <div class="outline-text-4" id="text-1-6-1">
 <div class="org-src-container">
-<pre class="src src-vimrc">call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.local/share/vim/plugged')
+<pre class="src src-conf">call plug<span style="color: #b22222;">#</span><span style="color: #b22222;">begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.local/share/vim/plugged')
+</span>
+Plug <span style="color: #bc8f8f;">'preservim/nerdtree'</span>
+Plug <span style="color: #bc8f8f;">'easymotion/vim-easymotion'</span>
 
-Plug 'preservim/nerdtree'
-Plug 'easymotion/vim-easymotion'
-
-call plug#end()
+call plug<span style="color: #b22222;">#</span><span style="color: #b22222;">end()</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org3ccb610" class="outline-4">
-<h4 id="org3ccb610"><span class="section-number-4">1.6.2.</span> keybindings</h4>
+<div id="outline-container-org6e43c5e" class="outline-4">
+<h4 id="org6e43c5e"><span class="section-number-4">1.6.2.</span> keybindings</h4>
 <div class="outline-text-4" id="text-1-6-2">
 <div class="org-src-container">
-<pre class="src src-vimrc">let mapleader = "\&lt;Space&gt;"
+<pre class="src src-conf"><span style="color: #b8860b;">let mapleader</span> = <span style="color: #bc8f8f;">"\&lt;Space&gt;"</span>
 
-" Fast saving
+<span style="color: #bc8f8f;">" Fast saving
 nmap &lt;leader&gt;w :w!&lt;cr&gt;
 
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
+"</span> :W sudo saves the file
+<span style="color: #bc8f8f;">" (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % &gt; /dev/null' &lt;bar&gt; edit!
 
-" Close the current buffer
+"</span> Close the current buffer
 map &lt;leader&gt;bd :Bclose&lt;cr&gt;:tabclose&lt;cr&gt;gT
 
-" Close all the buffers
+<span style="color: #bc8f8f;">" Close all the buffers
 map &lt;leader&gt;ba :bufdo bd&lt;cr&gt;
 
 map &lt;leader&gt;l :bnext&lt;cr&gt;
-map &lt;leader&gt;h :bprevious&lt;cr&gt;
+map &lt;leader&gt;h :bprevious&lt;cr&gt;</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org32244f7" class="outline-4">
-<h4 id="org32244f7"><span class="section-number-4">1.6.3.</span> ui</h4>
+<div id="outline-container-org788ec5e" class="outline-4">
+<h4 id="org788ec5e"><span class="section-number-4">1.6.3.</span> ui</h4>
 <div class="outline-text-4" id="text-1-6-3">
 <div class="org-src-container">
-<pre class="src src-vimrc">" Enable syntax highlighting
+<pre class="src src-conf"><span style="color: #bc8f8f;">" Enable syntax highlighting
 syntax enable
 
-" Set regular expression engine automatically
-set regexpengine=0
+"</span> Set regular expression engine automatically
+<span style="color: #b8860b;">set regexpengine</span>=0
 
-" Enable 256 colors palette in Gnome Terminal
+<span style="color: #bc8f8f;">" Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
+"</span> Set extra options when running in GUI mode
+if has(<span style="color: #bc8f8f;">"gui_running"</span>)
+    <span style="color: #b8860b;">set guioptions-</span>=T
+    <span style="color: #b8860b;">set guioptions-</span>=e
+    <span style="color: #b8860b;">set t_Co</span>=256
+    <span style="color: #b8860b;">set guitablabel</span>=%M\ %t
 endif
 
-" Set utf8 as standard encoding and en_US as the standard language
+<span style="color: #bc8f8f;">" Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
+"</span> Use Unix as the standard file type
+<span style="color: #b8860b;">set ffs</span>=unix,dos,mac
 
-" Disable scrollbars (real hackers don't use scrollbars for navigation!)
+<span style="color: #bc8f8f;">" Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
 set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
-" No annoying sound on errors
+"</span> No annoying sound on errors
 set noerrorbells
 set novisualbell
-set t_vb=
-set tm=500
+<span style="color: #b8860b;">set t_vb</span>=
+<span style="color: #b8860b;">set tm</span>=500
 
-" set mouse for all modes
+<span style="color: #bc8f8f;">" set mouse for all modes
 set mouse=a
 set mousemodel=popup_setpos
 silent! set ttymouse=sgr
 
-" title
+"</span> title
 set title
-set titlestring=
-set titlestring+=%t%(\ %M%)%(\ (%{expand(\"%:p:~:.:h\")}/)%)
-set titlestring+=\ \|\ %{$USER}@%{hostname()}:%{substitute(getcwd(),$HOME,'~','')}
+<span style="color: #b8860b;">set titlestring</span>=
+<span style="color: #b8860b;">set titlestring+</span>=%t%(\ %M%)%(\ (%{expand(\"%:p:~:.:h\")}/)%)
+<span style="color: #b8860b;">set titlestring+</span>=\ \|\ %{$USER}@%{hostname()}:%{substitute(getcwd(),$HOME,<span style="color: #bc8f8f;">'~'</span>,<span style="color: #bc8f8f;">''</span>)}
 
-" Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
+<span style="color: #bc8f8f;">" Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 &amp;&amp; !exists('s:std_in') &amp;&amp; v:this_session == '' | NERDTree | endif
 
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 &amp;&amp; exists('b:NERDTree') &amp;&amp; b:NERDTree.isTabTree() | quit | endif
+"</span> Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr(<span style="color: #bc8f8f;">'$'</span>) == 1 &amp;&amp; exists(<span style="color: #bc8f8f;">'b:NERDTree'</span>) &amp;&amp; b:NERDTree.isTabTree() | quit | endif
 </pre>
 </div>
 </div>
@@ -471,7 +471,7 @@ autocmd BufEnter * if winnr('$') == 1 &amp;&amp; exists('b:NERDTree') &amp;&amp;
 <div id="postamble" class="status">
 <p class="date">Date: 2024-03-24 Sun 00:00</p>
 <p class="author">Author: Kristian Alexander P</p>
-<p class="date">Created: 2025-08-06 Wed 22:53</p>
+<p class="date">Created: 2025-08-06 Wed 22:57</p>
 </div>
 </body>
 </html>
