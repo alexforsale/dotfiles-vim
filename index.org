@@ -48,13 +48,13 @@
 #+end_src
 ** Sane default from /archlinux/
 Use Vim defaults instead of 100% vi compatibility
-#+begin_src vimrc
+#+begin_src conf
 if &compatible
   set nocompatible
 endif
 #+end_src
 ** move temporary files into a secure location
-#+begin_src vimrc
+#+begin_src conf
 if exists('$XDG_CACHE_HOME')
   let &g:directory=$XDG_CACHE_HOME
 else
@@ -75,14 +75,14 @@ if ! isdirectory(expand(&g:undodir))
 endif
 #+end_src
 ** Make shift-insert work like in Xterm
-#+begin_src vimrc
+#+begin_src conf
 if has('gui_running')
   map <S-Insert> <MiddleMouse>
   map! <S-Insert> <MiddleMouse>
 endif
 #+end_src
 ** Misc sane defaults
-#+begin_src vimrc
+#+begin_src conf
   " Load plugins according to detected filetype.
   filetype plugin indent on
   " Enable syntax highlighting.
@@ -145,7 +145,7 @@ endif
   set showmatch
 #+end_src
 ** modular
-#+begin_src vimrc
+#+begin_src conf
 runtime modules/plug.vim
 runtime modules/keybindings.vim
 runtime modules/ui.vim
@@ -155,7 +155,7 @@ runtime modules/ui.vim
 :header-args: :tangle .config/vim/modules/plug.vim :mkdirp t
 :END:
 
-#+begin_src vimrc
+#+begin_src conf
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.local/share/vim/plugged')
 
 Plug 'preservim/nerdtree'
@@ -167,7 +167,7 @@ call plug#end()
 :PROPERTIES:
 :header-args: :tangle .config/vim/modules/keybindings.vim :mkdirp t
 :END:
-#+begin_src vimrc
+#+begin_src conf
 let mapleader = "\<Space>"
 
 " Fast saving
@@ -190,7 +190,7 @@ map <leader>h :bprevious<cr>
 :PROPERTIES:
 :header-args: :tangle .config/vim/modules/ui.vim :mkdirp t
 :END:
-#+begin_src vimrc
+#+begin_src conf
 " Enable syntax highlighting
 syntax enable
 
